@@ -24,18 +24,18 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/posts/:id' do
-    @post = @posts.find_by_id(params[:id])
+    @post = Post.find_by_id(params[:id])
     erb :show
   end
 
 #====== UPDATE ======
   get '/posts/:id/edit' do
-    @post = @posts.find_by_id(params[:id])
+    @post = Post.find_by_id(params[:id])
     erb :edit
   end
 
   patch '/posts/:id' do
-    @post = @posts.find_by_id(params[:id])
+    @post = Post.find_by_id(params[:id])
     @post.name = params[:name]
     @post.content = params[:content]
     @post.save
@@ -44,7 +44,7 @@ class ApplicationController < Sinatra::Base
 
 #====== DELETE ======
   delete '/posts/:id/delete' do
-    @post = @posts.find_by_id(params[:id])
+    @post = Post.find_by_id(params[:id])
     @post.delete
     erb :deleted
   end
