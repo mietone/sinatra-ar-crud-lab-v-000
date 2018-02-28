@@ -46,6 +46,6 @@ class ApplicationController < Sinatra::Base
   delete '/posts/:id/delete' do
     @post = @posts.find_by_id(params[:id])
     @post.delete
-    erb :show
+    erb :deleted
   end
 end
